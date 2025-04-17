@@ -1,13 +1,17 @@
-import { ScreenContent } from 'components/ScreenContent';
-import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+
+import HomeScreen from './screens/HomeScreen';
+import { store } from './store';
 
 import './global.css';
 
 export default function App() {
   return (
-    <>
-      <ScreenContent title="Home" path="App.tsx" />
-      <StatusBar style="auto" />
-    </>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <HomeScreen />
+      </SafeAreaProvider>
+    </Provider>
   );
 }
