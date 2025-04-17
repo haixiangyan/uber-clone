@@ -6,11 +6,6 @@ import { useSelector } from 'react-redux';
 
 import { selectDestination, selectOrigin } from '../slices/navSlice';
 
-const defaultCoords = {
-  long: 114.061499,
-  lat: 22.540829,
-};
-
 const Map = () => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);

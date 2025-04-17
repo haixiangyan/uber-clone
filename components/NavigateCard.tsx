@@ -1,9 +1,11 @@
 import { GOOGLE_MAPS_APIKEY } from '@env';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
+import { Icon } from '@rneui/base';
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { useDispatch } from 'react-redux';
 
+import NavFavourite from './NavFavourite';
 import { setDestination } from '../slices/navSlice';
 
 export const NavigateCard = () => {
@@ -28,7 +30,7 @@ export const NavigateCard = () => {
                   description: data.description,
                 })
               );
-              navigation.navigate("RideOptionsCard")
+              navigation.navigate('RideOptionsCard');
             }}
             fetchDetails
             minLength={2}
@@ -39,6 +41,22 @@ export const NavigateCard = () => {
             }}
           />
         </View>
+
+        <NavFavourite />
+      </View>
+
+      <View className="mt-auto flex-row justify-evenly border-t border-gray-100 bg-white py-2">
+        <TouchableOpacity
+          onPress={() => navigation.navigate('RideOptionsCard')}
+          className="flex w-24 flex-row justify-between rounded-full bg-black px-4 py-3">
+          <Icon name="car" type="font-awesome" color="white" size={16} />
+          <Text className="text-center text-white">Rides</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity className="flex w-24 flex-row justify-between rounded-full px-4 py-3">
+          <Icon name="fast-food-outline" type="ionicon" color="black" size={16} />
+          <Text className="text-center ">Eats</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
