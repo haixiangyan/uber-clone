@@ -3,25 +3,27 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 export interface NavState {
-  origin: string;
-  destination: string;
-  travelTimeInfo: string;
+  origin?: {
+    location?: {
+      lng: number;
+      lat: number;
+    };
+    description: string;
+  };
+  destination?: string | null;
+  travelTimeInfo?: string;
 }
 
-const initialState: NavState = {
-  origin: '',
-  destination: '',
-  travelTimeInfo: '',
-};
+const initialState: NavState = {};
 
 export const navSlice = createSlice({
   name: 'nav',
   initialState,
   reducers: {
-    setOrigin: (state, action: PayloadAction<string>) => {
+    setOrigin: (state, action: PayloadAction<NavState['origin']>) => {
       state.origin = action.payload;
     },
-    setDestination: (state, action: PayloadAction<string>) => {
+    setDestination: (state, action: PayloadAction<NavState['destination']>) => {
       state.destination = action.payload;
     },
     setTravelTimeInfo: (state, action: PayloadAction<string>) => {
