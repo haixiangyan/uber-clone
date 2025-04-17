@@ -10,7 +10,13 @@ export interface NavState {
     };
     description: string;
   };
-  destination?: string | null;
+  destination?: {
+    location?: {
+      lng: number;
+      lat: number;
+    };
+    description: string;
+  };
   travelTimeInfo?: string;
 }
 
