@@ -17,7 +17,17 @@ export interface NavState {
     };
     description: string;
   };
-  travelTimeInfo?: string;
+  travelTimeInfo?: {
+    distance: {
+      text: string;
+      value: number;
+    };
+    duration: {
+      text: string;
+      value: number;
+    };
+    status: string;
+  };
 }
 
 const initialState: NavState = {};
